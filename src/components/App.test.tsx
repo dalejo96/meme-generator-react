@@ -1,12 +1,13 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import {render,fireEvent} from '@testing-library/react'
-import {App} from '../src/components/App'
-import {Header} from '../src/components/Header'
+import {App} from './App'
+import {Header} from './Header'
+import { MemeGenerator } from './MemeGenerator'
 
 
 /* describe('App component tests',()=>{
-    let container;
+    let container:any;
 
     beforeEach(()=>{
         container = document.createElement('div');
@@ -27,9 +28,20 @@ import {Header} from '../src/components/Header'
 
 })  */
 
-describe('',()=>{
-    it('it renders correctly',()=>{
-        const {queryByTestId,queryByPlaceHolderName}=render(<Header/>);
+describe('Header component',()=>{
+    it('it renders correctly by test id an image',()=>{
+        const {queryByTestId}=render(<Header/>);
         expect(queryByTestId('header-img')).toBeTruthy();
+    })
+    it('it renders correctly by test id a p',()=>{
+        const {queryByTestId}=render(<Header/>);
+        expect(queryByTestId('header-p')).toBeTruthy();
+    })
+})
+
+describe('MemeGenerator component',()=>{
+    it('it renders correctly by test id the general div',()=>{
+        const {queryByTestId}=render(<MemeGenerator/>);
+        expect(queryByTestId('div-meme')).toBeTruthy();
     })
 })

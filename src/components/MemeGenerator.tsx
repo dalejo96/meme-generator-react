@@ -26,6 +26,14 @@ export const MemeGenerator = () => {
         setImage(randMemeImg)
     }
 
+    const handleChangeTopText = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setTopText(e.target.value)
+    }
+
+    const handleChangeBottomText = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setBottomText(e.target.value)
+    }
+
     function sleep(milliseconds: number) {
         const date = Date.now();
         let currentDate = null;
@@ -54,26 +62,31 @@ export const MemeGenerator = () => {
     }, [])
 
     return (
-        <div>
+        <div data-testid="div-meme">
             {loading ? (
                 <div>
-                    <form className="meme-form" onSubmit={handleSumbit}>
+                    <form 
+                        data-testid="form-gen"
+                        className="meme-form" onSubmit={handleSumbit}>
                         <input
+                            data-testid='top-input'
                             type="text"
                             name="topText"
                             placeholder="Top Text"
                             value={topText}
-                            onChange={(e) => setTopText(e.target.value)}
+                            onChange={handleChangeTopText}
                         />
                         <input
+                            data-testid='bottom-input'
                             type="text"
                             name="bottomText"
                             placeholder="Bottom Text"
                             value={bottomText}
-                            onChange={(e) => setBottomText(e.target.value)}
+                            onChange={handleChangeBottomText}
                         />
-
-                        <button>Generate</button>
+                        <button
+                            data-testid='button-gen'
+                        >Generate</button>
                     </form>
                     <div className="meme">
                         <img src={randomImage} alt="" />
