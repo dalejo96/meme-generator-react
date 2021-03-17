@@ -1,13 +1,14 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import { render, fireEvent } from '@testing-library/react'
-import { MemeGenerator } from './MemeGenerator'
+import { MemeGenerator } from '../src/components/MemeGenerator'
+import { Button } from '../src/components/Button'
 
 
 describe('Input value Top Text', () => {
     it('updates on change', () => {
-        const {queryByTestId} = render(<MemeGenerator/>);
-        const topTextInput = queryByTestId('top-input') as HTMLInputElement;
+        const {getByPlaceholderText} = render(<MemeGenerator/>);
+        const topTextInput = getByPlaceholderText('Top text') as HTMLInputElement;        
         fireEvent.change(topTextInput,{target:{value: "something"}});
         expect(topTextInput.value).toBe("somehing");
 
@@ -18,13 +19,10 @@ describe('Input value Top Text', () => {
     })
 })
 
-/* describe('Button click',()=>{
+describe('Button click',()=>{
     it('Validate left click',()=>{
-        const rightClick = { button: 0 };
-        const {queryByTestId} = render(<MemeGenerator/>);
-        fireEvent.click(queryByTestId('button-gen'));
-
-
-
+        const leftClcik = { button: 0 };
+        const {getByText} = render(<Button/>);
+        fireEvent.click(getByText('Generate'),leftClcik);
     })
-}) */
+})

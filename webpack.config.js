@@ -5,16 +5,23 @@ module.exports = {
   mode: 'development',
   entry: "./src/index.tsx",
   output: {
-    path: path.resolve(__dirname, "build"),
+    path: path.resolve(__dirname, "dist"),
     filename: "bundle.js"
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        loader: "ts-loader", 
+        use: {
+          loader: "ts-loader",
+        },
         exclude: /node_modules/
-      }, {
+      },
+      {
+        test: /\.html$/,
+        use: [{ loader: "html-loader" }],
+      },
+      {
         test: /\.(scss)$/,
         use: [
           {
@@ -39,17 +46,18 @@ module.exports = {
           {
             // Loads a SASS/SCSS file and compiles it to CSS
             loader: 'sass-loader'
-          }
+          },
         ]
       }
     ]
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".json", ".wasm"]
+    extensions: [".ts", ".tsx", ".js"]
   },
-  /* plugins: [
+  plugins: [
     new HtmlWebpackPlugin({
-      template: './index.html'
+      template: './index.html',
+      filename:'./index.html'
     })
-  ], */
+  ],
 };
