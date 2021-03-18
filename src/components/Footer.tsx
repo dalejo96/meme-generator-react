@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styled from 'styled-components'
-export const Footer = () => {
+export const Footer = ():React.ReactElement  => {
     const Footer = styled.footer`
         background: #DB7093;
         background: -webkit-linear-gradient(to right, #DEBAC6, #A3546E);  /* Chrome 10-25, Safari 5.1-6 */

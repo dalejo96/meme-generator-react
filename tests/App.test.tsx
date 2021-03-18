@@ -5,29 +5,8 @@ import {App} from '../src/components/App'
 import {Header} from '../src/components/Header'
 import { MemeGenerator } from '../src/components/MemeGenerator'
 import { Button } from '../src/components/Button'
+import { TextInput } from '../src/components/TextInput'
 
-
-/* describe('App component tests',()=>{
-    let container:any;
-
-    beforeEach(()=>{
-        container = document.createElement('div');
-        document.body.appendChild(container);
-        ReactDOM.render(<App/>,container);
-    })
-
-    afterEach(()=>{
-        document.body.removeChild(container);
-        container.remove();
-    })
-
-    it('Renders correctly initial document',()=>{
-        const inputs = container.querySelectorAll('h1');
-        expect(inputs).toHaveLength(1);
-    })
-
-
-})  */
 
 describe('Header component',()=>{
     it('it renders correctly by test id an image',()=>{
@@ -45,11 +24,7 @@ describe('Button component',()=>{
 
 describe('Meme Generator component',()=>{
     it('it renders correctly with getByPlaceholderText the top input',()=>{
-        const {getByPlaceholderText}=render(<MemeGenerator/>);
+        const {getByPlaceholderText}=render(<TextInput name="topText" placeholder="Top Text" onChange={''} />);
         expect(getByPlaceholderText('Top Text')).toBeTruthy();
-    })
-    it('it renders correctly with getByPlaceholderText the top input',()=>{
-        const {getByPlaceholderText}=render(<MemeGenerator/>);
-        expect(getByPlaceholderText('Bottom Text')).toBeTruthy();
     })
 })

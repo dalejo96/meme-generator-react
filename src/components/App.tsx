@@ -3,6 +3,16 @@ import {Header} from "./Header"
 import {MemeGenerator} from "./MemeGenerator"
 import {Footer} from "./Footer"
 
+export const App = ():React.ReactElement => {
+    return (
+        <div>
+            <Header />
+            <MemeGenerator />
+            <Footer />
+        </div>
+    )
+}
+
 /* export class App extends React.Component<IProps,any>{
     render(){
         return <h1 className="display-4">Hello {this.props.name}</h1>
@@ -18,14 +28,3 @@ interface IProps{
 } 
 
 */
-
-export const App = () =>{
-    return (
-        <div>
-            <Header />
-            <MemeGenerator />
-            <Footer />
-        </div>
-    )
-}
-

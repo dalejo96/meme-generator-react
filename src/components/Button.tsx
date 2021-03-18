@@ -1,7 +1,6 @@
 import * as React from 'react'
-import { useState, useEffect } from 'react'
 
-export const Button = () => {
+export const Button = ():React.ReactElement => {
 
     return (
         <button 

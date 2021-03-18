@@ -4,12 +4,14 @@
   "description": "",
   "scripts": {
     "test": "jest",
-    "start": "webpack serve --config webpack.config.js"
+    "start": "webpack serve --config webpack.config.js",
+    "lint": "tsc --noEmit && eslint src/**/*.ts{,x}"
   },
   "keywords": [],
   "author": "DV",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "jquery": "^3.6.0",
     "popper.js": "^1.16.1",

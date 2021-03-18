@@ -5,16 +5,18 @@ import styled from 'styled-components';
 //import { TextInput } from './TextInput'
 import {Newmeme} from './Newmeme'
 import {Button} from './Button'
+import { TextInput } from './TextInput';
+import axios from 'axios';
 
-export const MemeGenerator = () => {
+export const MemeGenerator = ():React.ReactElement => {
     //let randomImages: IImages[] = [];
     const [topText, setTopText] = useState<string>('');
-    const [randomImages, setRandomImages] = useState<IImage[]>([]);
+    const [randomImages, setRandomImages] = useState<Image[]>([]);
     const [bottomText, setBottomText] = useState<string>('');
     const [randomImage, setImage] = useState<string>('http://i.imgflip.com/1bij.jpg');
     const [loading, setLoading] = useState(false);
 
-    interface IImage {
+    interface Image {
         url: string,
     }
 
@@ -29,8 +31,8 @@ export const MemeGenerator = () => {
         setImage(randMemeImg)
     }
 
-    const handleChangeTopText = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setTopText(e.target.value)
+    const handleChangeTopText = (e: string) => {
+        setTopText(e)
     }
 
     const handleChangeBottomText = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,22 +47,21 @@ export const MemeGenerator = () => {
         } while (currentDate - date < milliseconds);
     }
 
-    const SearchMemes = async () => {
-        try {
-            await fetch("https://api.imgflip.com/get_memes")
-                .then(response => response.json())
-                .then(response => {
-                    const { memes } = response.data
-                    setRandomImages(memes);
-                })
-            sleep(2000);
-            setLoading(true);
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
     useEffect(() => {
+        const SearchMemes = async () => {
+            try {
+                await axios.get("https://api.imgflip.com/get_memes")
+                    .then(response => response.data)
+                    .then(response => {
+                        const { memes } = response.data
+                        setRandomImages(memes);
+                    })
+                sleep(2000);
+                setLoading(true);
+            } catch (error) {
+                console.log(error);
+            }
+        }
         SearchMemes();
     }, [])
 
@@ -70,12 +71,17 @@ export const MemeGenerator = () => {
                 <div>
                     <form
                         className="meme-form" onSubmit={handleSumbit}>
-                        <input
+                        {/* <input
                             type="text"
                             name="topText"
                             placeholder="Top Text"
                             value={topText}
                             onChange={handleChangeTopText}
+                        /> */}
+                        <TextInput 
+                            name="topText" 
+                            placeholder="Top Text"
+                            onChange={handleChangeTopText} 
                         />
                         <input
                             type="text"

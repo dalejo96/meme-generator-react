@@ -1,12 +1,11 @@
 import * as React from 'react'
-import { useState, useEffect } from 'react'
 
-interface IProps {
+interface NewMemeProps {
     image: string,
     topText: string,
-    bottomText: string,
+    bottomText: string
 }
-export const Newmeme = (props: IProps) => {
+export const Newmeme = (props:NewMemeProps) : React.ReactElement=>{
 
     return (
         <div className="meme">

@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-export const Header = () => {
+export const Header = ():React.ReactElement => {
     return (
         <header>
             <img
