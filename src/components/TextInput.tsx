@@ -1,45 +1,30 @@
 import * as React from 'react'
 import {useState} from 'react'
 
-/* export const TextInput = (props:TextInputProps) : React.ReactElement => {
-    const handleChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
-        props.onChange && props.onChange(e.target.value);
-    }
+interface TextInputProps{
+    name:string,
+    placeholder:string,
+    onChange:(text:string)=>void
+} 
 
-    return (
-        <input
-            type="text"
-            name={props.name}
-            placeholder={props.placeholder}
-            value={props.value}
-            onChange={handleChangeText}
-        />
-    )
-} */
-
-export const TextInput = (props:TextInputProps) : React.ReactElement => {
+export const TextInput = ({name,placeholder,onChange}:TextInputProps) : React.ReactElement => {
     const [text, setText] = useState<string>('');
 
     const handleChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (props.onChange) {
-            props.onChange(text);
+        const newText = e.target.value;
+        setText(newText);
+        if (onChange) {
+            onChange(newText);
         }
-        setText(e.target.value);
     }
 
     return (
         <input
             type="text"
-            name={props.name}
-            placeholder={props.placeholder}
+            name={name}
+            placeholder={placeholder}
             value={text}
             onChange={handleChangeText}
         />
     )
 }
-
-interface TextInputProps{
-    name:string,
-    placeholder:string,
-    onChange:any
-} 

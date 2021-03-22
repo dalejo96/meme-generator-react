@@ -4,8 +4,6 @@ export const Button = ():React.ReactElement => {
 
     return (
         <button 
-            type="submit"
-            aria-label='Generate'
-        >Generate</button>
+            type="submit">Generate</button>
     )
 }

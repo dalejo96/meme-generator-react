@@ -22,9 +22,16 @@ describe('Button component',()=>{
     })
 })
 
-describe('Meme Generator component',()=>{
+describe('Text Input Component',()=>{
     it('it renders correctly with getByPlaceholderText the top input',()=>{
-        const {getByPlaceholderText}=render(<TextInput name="topText" placeholder="Top Text" onChange={''} />);
+        const {getByPlaceholderText}=render(<TextInput name="topText" placeholder="Top Text" onChange={}  />);
         expect(getByPlaceholderText('Top Text')).toBeTruthy();
+    })
+
+    it('updates on change',()=>{
+        const {getByPlaceholderText}=render(<TextInput name="topText" placeholder="Top Text" onChange="" />);
+        const topTextInput = getByPlaceholderText('Top Text') as HTMLInputElement;        
+        fireEvent.change(topTextInput,{target:{value: "something"}});
+        expect(topTextInput.value).toBe("something");
     })
 })

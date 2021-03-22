@@ -7,8 +7,17 @@ import {Newmeme} from './Newmeme'
 import {Button} from './Button'
 import { TextInput } from './TextInput';
 import axios from 'axios';
+import { callApi } from '../../services/DataImages';
 
-export const MemeGenerator = ():React.ReactElement => {
+const DIV = styled.div`
+    margin:50px 300px 50px 300px;
+`;
+
+interface MemeGeneratorProps{
+    apiCall: () => any 
+} 
+
+export const MemeGenerator = ({apiCall}:MemeGeneratorProps):React.ReactElement => {
     //let randomImages: IImages[] = [];
     const [topText, setTopText] = useState<string>('');
     const [randomImages, setRandomImages] = useState<Image[]>([]);
@@ -20,10 +29,6 @@ export const MemeGenerator = ():React.ReactElement => {
         url: string,
     }
 
-    const DIV = styled.div`
-        margin:50px 300px 50px 300px;
-    `;
-
     const handleSumbit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const randNum = Math.floor(Math.random() * randomImages.length)
@@ -31,12 +36,12 @@ export const MemeGenerator = ():React.ReactElement => {
         setImage(randMemeImg)
     }
 
-    const handleChangeTopText = (e: string) => {
-        setTopText(e)
+    const handleChangeTopText = (topText: string) => {
+        setTopText(topText)
     }
 
-    const handleChangeBottomText = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setBottomText(e.target.value)
+    const handleChangeBottomText = (bottomText: string) => {
+        setBottomText(bottomText)
     }
 
     function sleep(milliseconds: number) {
@@ -50,12 +55,15 @@ export const MemeGenerator = ():React.ReactElement => {
     useEffect(() => {
         const SearchMemes = async () => {
             try {
-                await axios.get("https://api.imgflip.com/get_memes")
-                    .then(response => response.data)
+                /* await axios.get("https://api.imgflip.com/get_memes")
                     .then(response => {
-                        const { memes } = response.data
+                        const { memes } = response.data.data
                         setRandomImages(memes);
-                    })
+                    }) */
+                await callApi().then((response:any) => {
+                        const { memes } = response.data.data
+                        setRandomImages(memes);
+                    });
                 sleep(2000);
                 setLoading(true);
             } catch (error) {
@@ -78,17 +86,22 @@ export const MemeGenerator = ():React.ReactElement => {
                             value={topText}
                             onChange={handleChangeTopText}
                         /> */}
-                        <TextInput 
-                            name="topText" 
-                            placeholder="Top Text"
-                            onChange={handleChangeTopText} 
-                        />
-                        <input
+                        {/* <input
                             type="text"
                             name="bottomText"
                             placeholder="Bottom Text"
                             value={bottomText}
                             onChange={handleChangeBottomText}
+                        /> */}
+                        <TextInput 
+                            name="topText" 
+                            placeholder="Top Text"
+                            onChange={handleChangeTopText} 
+                        />
+                        <TextInput 
+                            name="bottomText" 
+                            placeholder="Bottom Text"
+                            onChange={handleChangeBottomText} 
                         />
                         <Button />
                     </form>

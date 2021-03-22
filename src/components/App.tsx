@@ -2,12 +2,15 @@ import * as React from "react"
 import {Header} from "./Header"
 import {MemeGenerator} from "./MemeGenerator"
 import {Footer} from "./Footer"
+import {Start} from "./Start"
+import {APIWrapperMock, callApi} from '../../services/DataImages'
 
 export const App = ():React.ReactElement => {
     return (
         <div>
             <Header />
-            <MemeGenerator />
+            {/* <MemeGenerator apiCall={callApi} /> */}
+            <Start/>
             <Footer />
         </div>
     )
