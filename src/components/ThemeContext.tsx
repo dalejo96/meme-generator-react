@@ -1,29 +1,35 @@
-import * as React from 'react'
-import {useContext,useState} from 'react'
+import * as React from "react";
+import { useContext, useState } from "react";
 
-const ThemeContext = React.createContext(true); 
-const ThemeUpdateContext = React.createContext<any>({});
-
-export function useTheme(){
-    return useContext(ThemeContext);
+interface ThemeCtx {
+  theme: "dark" | "light";
+  toggle: () => void;
 }
 
-export function useThemeUpdate(){
-    return useContext(ThemeUpdateContext);
-}
+export const ThemeContext = React.createContext<ThemeCtx>({
+  theme: "dark",
+  toggle: () => undefined,
+});
 
-export const ThemeProvider:React.FC=({children})=>{
-    const [darkTheme,setDarkTheme] = useState<boolean>(true);
+export const useTheme = () => {
+  return useContext(ThemeContext);
+};
 
-    function toggleTheme(){
-        setDarkTheme(prevDarkTheme => !prevDarkTheme);
-    }
+export const ThemeProvider: React.FC = ({ children }) => {
+  const [theme, setTheme] = useState<ThemeCtx["theme"]>("dark");
 
-    return(
-         <ThemeContext.Provider value={darkTheme}>
-             <ThemeUpdateContext.Provider value={toggleTheme}>
-                {children}
-             </ThemeUpdateContext.Provider>
-         </ThemeContext.Provider>
-    )
-}
+  const toggle = (): void => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
+  const themeContext: ThemeCtx = {
+    theme,
+    toggle,
+  };
+
+  return (
+    <ThemeContext.Provider value={themeContext}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};

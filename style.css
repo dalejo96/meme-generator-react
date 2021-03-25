@@ -87,7 +87,7 @@ header > p {
 }
 
 .meme-form > input {
-  width: 45%;
+  width: 35%;
   height: 40px;
 }
 
@@ -96,8 +96,6 @@ header > p {
   font-family: VT323, monospace;
   font-size: 25px;
   letter-spacing: 1.5px;
-  color: white;
-  background: #6441a5;
 }
 
 .meme-form > input::-webkit-input-placeholder {

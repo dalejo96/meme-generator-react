@@ -1,37 +1,50 @@
-import * as React from 'react'
-import * as ReactDOM from 'react-dom'
-import {render,fireEvent} from '@testing-library/react'
-import {App} from '../src/components/App'
-import {Header} from '../src/components/Header'
-import { MemeGenerator } from '../src/components/MemeGenerator'
-import { Button } from '../src/components/Button'
-import { TextInput } from '../src/components/TextInput'
+import * as React from "react";
+import * as ReactDOM from "react-dom";
+import { render, fireEvent } from "@testing-library/react";
+import { Header } from "../src/components/Header";
+import Button from "../src/components/Button";
+import { TextInput } from "../src/components/TextInput";
 
+describe("Header component", () => {
+  it("it renders correctly by text", () => {
+    const { getByText } = render(<Header />);
+    expect(getByText("Meme Generator")).toBeTruthy();
+  });
+  it("it renders correctly by text of switch button", () => {
+    const { getByText } = render(<Header />);
+    expect(getByText("Dark")).toBeTruthy();
+  });
+});
 
-describe('Header component',()=>{
-    it('it renders correctly by test id an image',()=>{
-        const {getByText}=render(<Header/>);
-        expect(getByText('Meme Generator')).toBeTruthy();
-    })
-})
+describe("Button component", () => {
+  it("it renders correctly by test id the general div", () => {
+    const { getByText } = render(<Button />);
+    expect(getByText("Generate")).toBeTruthy();
+  });
+});
 
-describe('Button component',()=>{
-    it('it renders correctly by test id the general div',()=>{
-        const {getByText}=render(<Button/>);
-        expect(getByText('Generate')).toBeTruthy();
-    })
-})
+describe("Text Input Component", () => {
+  it("it renders correctly with getByPlaceholderText the top input", () => {
+    const { getByPlaceholderText } = render(
+      <TextInput
+        name="topText"
+        placeholder="Top Text"
+        onChange={() => undefined}
+      />
+    );
+    expect(getByPlaceholderText("Top Text")).toBeTruthy();
+  });
 
-describe('Text Input Component',()=>{
-    it('it renders correctly with getByPlaceholderText the top input',()=>{
-        const {getByPlaceholderText}=render(<TextInput name="topText" placeholder="Top Text" onChange={}  />);
-        expect(getByPlaceholderText('Top Text')).toBeTruthy();
-    })
-
-    it('updates on change',()=>{
-        const {getByPlaceholderText}=render(<TextInput name="topText" placeholder="Top Text" onChange="" />);
-        const topTextInput = getByPlaceholderText('Top Text') as HTMLInputElement;        
-        fireEvent.change(topTextInput,{target:{value: "something"}});
-        expect(topTextInput.value).toBe("something");
-    })
-})
+  it("updates on change", () => {
+    const { getByPlaceholderText } = render(
+      <TextInput
+        name="topText"
+        placeholder="Top Text"
+        onChange={() => undefined}
+      />
+    );
+    const topTextInput = getByPlaceholderText("Top Text") as HTMLInputElement;
+    fireEvent.change(topTextInput, { target: { value: "something" } });
+    expect(topTextInput.value).toBe("something");
+  });
+});

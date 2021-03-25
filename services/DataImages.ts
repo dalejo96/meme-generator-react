@@ -1,8 +1,10 @@
-import axios from "axios";
-import { AnyStyledComponent } from "styled-components";
+import axios, { AxiosResponse } from "axios";
+
 export class APIWrapper {
   async get() {
-    const response = await axios.get("https://api.imgflip.com/get_memes");
+    const response: AxiosResponse = await axios.get(
+      "https://api.imgflip.com/get_memes"
+    );
     return response;
   }
 }
@@ -24,7 +26,3 @@ export class APIWrapperMock {
 export function callApi(client: any = new APIWrapper()): any {
   return client.get();
 }
-
-/* const apiWrapper: APIWrapper = new APIWrapper();
-const data = apiWrapper.get();
-console.log(data); */

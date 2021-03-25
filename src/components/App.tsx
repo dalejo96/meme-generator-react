@@ -1,20 +1,18 @@
-import * as React from "react"
-import {Header} from "./Header"
-import {MemeGenerator} from "./MemeGenerator"
-import {Footer} from "./Footer"
-import {Start} from "./Start"
-import {APIWrapperMock, callApi} from '../../services/DataImages'
+import * as React from "react";
+import { Header } from "./Header";
+import { Footer } from "./Footer";
+import { Start } from "./Start";
 
-export const App = ():React.ReactElement => {
-    return (
-        <div>
-            <Header />
-            {/* <MemeGenerator apiCall={callApi} /> */}
-            <Start/>
-            <Footer />
-        </div>
-    )
-}
+export const App = (): React.ReactElement => {
+  return (
+    <div>
+      <Header />
+      {/* <MemeGenerator apiCall={callApi} /> */}
+      <Start />
+      <Footer />
+    </div>
+  );
+};
 
 /* export class App extends React.Component<IProps,any>{
     render(){
