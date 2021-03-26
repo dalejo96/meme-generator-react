@@ -5,12 +5,13 @@ import userEvent from "@testing-library/user-event";
 import { Header } from "../src/components/Header";
 import { Footer } from "../src/components/Footer";
 import Information from "../src/components/Information";
+import { Nav } from "../src/components/Nav";
 
 describe("<ThemeProvider />", () => {
   beforeEach(() => {
     render(
       <ThemeProvider>
-        <Header />
+        <Nav />
       </ThemeProvider>
     );
   });
@@ -47,7 +48,7 @@ describe("<ThemeContext.Provider />", () => {
     beforeEach(() => {
       render(
         <ThemeContext.Provider value={theme}>
-          <Header />
+          <Nav />
           <Information />
         </ThemeContext.Provider>
       );
@@ -56,7 +57,9 @@ describe("<ThemeContext.Provider />", () => {
     describe("when clicking toggle", () => {
       it("theme is initilized with dark", () => {
         expect(
-          screen.getByText("Welcome to the meme generator! With theme dark")
+          screen.getByText(
+            "Welcome to the meme generator! With dark theme! Hovered 0 times!"
+          )
         ).toBeTruthy();
       });
     });
@@ -85,7 +88,9 @@ describe("<ThemeContext.Provider />", () => {
     describe("when clicking toggle", () => {
       it("theme is initilized with light", () => {
         expect(
-          screen.getByText("Welcome to the meme generator! With theme light")
+          screen.getByText(
+            "Welcome to the meme generator! With light theme! Hovered 0 times!"
+          )
         ).toBeTruthy();
       });
     });

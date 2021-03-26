@@ -1,9 +1,9 @@
 import * as React from "react";
 import { useTheme } from "./ThemeContext";
-import BootstrapSwitchButton from "bootstrap-switch-button-react";
+//import BootstrapSwitchButton from "bootstrap-switch-button-react";
 
 export const Header = (): React.ReactElement => {
-  const { theme, toggle } = useTheme();
+  const { theme } = useTheme();
 
   const themeStyles = {
     backgroundColor: theme === "dark" ? "#461E65" : "#6441a5",
@@ -20,7 +20,7 @@ export const Header = (): React.ReactElement => {
         alt="Problem?"
       />
       <p style={foreColorStyle}>Meme Generator</p>
-      <BootstrapSwitchButton
+      {/* <BootstrapSwitchButton
         checked={false}
         size="lg"
         onlabel="Light"
@@ -28,7 +28,7 @@ export const Header = (): React.ReactElement => {
         offlabel="Dark"
         offstyle={"dark"}
         onChange={toggle}
-      />
+      /> */}
     </header>
   );
 };

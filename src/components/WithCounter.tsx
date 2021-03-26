@@ -12,20 +12,21 @@ export interface InjectedCounterProps {
   count: number;
   incrementCount: () => void;
 }
+//cambiar a function
 
-//const withCounter = (WrapperComponent: React.ComponentType<P>) => {
-const withCounter = <P extends InjectedCounterProps>(
+function withCounter<P extends InjectedCounterProps>(
   WrapperComponent: React.ComponentType<P>
-) => {
-  const WithCounter = (props: IProps): React.ReactElement => {
-    const [count, setCount] = useState<number>(0);
+): React.ComponentType<P> {
+  //const WithCounter: React.FC<P> = (props) => {
+  return (props) => {
+    const [count, setCount] = useState(0);
 
     const incrementCount = () => {
       setCount(count + 1);
     };
     return (
       <WrapperComponent
-        {...(props as P)}
+        {...props}
         count={count}
         incrementCount={incrementCount}
       />
@@ -57,8 +58,6 @@ const withCounter = <P extends InjectedCounterProps>(
       );
     }
   } */
-
-  return WithCounter;
-};
+}
 
 export default withCounter;

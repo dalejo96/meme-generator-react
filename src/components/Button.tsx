@@ -7,7 +7,7 @@ interface ButtonProps {
   incrementCount: () => void;
 }
 
-const Button = ({ count, incrementCount }: ButtonProps): React.ReactElement => {
+const Button: React.FC<ButtonProps> = ({ count, incrementCount }) => {
   const { theme } = useTheme();
 
   const themeStyle = {
@@ -22,4 +22,5 @@ const Button = ({ count, incrementCount }: ButtonProps): React.ReactElement => {
   );
 };
 
-export default withCounter(Button);
+export default Button;
+//export default withCounter(Button);

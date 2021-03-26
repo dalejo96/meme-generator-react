@@ -1,8 +1,5 @@
 import * as React from "react";
 import { render, cleanup, waitFor } from "@testing-library/react";
-import { Start } from "../src/components/Start";
-
-afterEach(cleanup);
 
 /* it("fetches and displays loading", async () => {
   const { getByText } = render(<Start />);

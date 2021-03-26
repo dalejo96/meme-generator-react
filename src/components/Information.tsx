@@ -29,7 +29,7 @@ const Information = ({
         </div>
       );
     } else {
-      throw new Error("error!");
+      throw new Error("Too much hover !!");
     }
   }
 };

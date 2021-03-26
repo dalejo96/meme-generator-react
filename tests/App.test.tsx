@@ -1,50 +1,17 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import { render, fireEvent } from "@testing-library/react";
-import { Header } from "../src/components/Header";
-import Button from "../src/components/Button";
+import { render, fireEvent, screen, waitFor } from "@testing-library/react";
 import { TextInput } from "../src/components/TextInput";
+import { Nav } from "../src/components/Nav";
 
-describe("Header component", () => {
-  it("it renders correctly by text", () => {
-    const { getByText } = render(<Header />);
-    expect(getByText("Meme Generator")).toBeTruthy();
-  });
-  it("it renders correctly by text of switch button", () => {
-    const { getByText } = render(<Header />);
-    expect(getByText("Dark")).toBeTruthy();
-  });
-});
-
-describe("Button component", () => {
-  it("it renders correctly by test id the general div", () => {
-    const { getByText } = render(<Button />);
-    expect(getByText("Generate")).toBeTruthy();
-  });
-});
-
-describe("Text Input Component", () => {
-  it("it renders correctly with getByPlaceholderText the top input", () => {
-    const { getByPlaceholderText } = render(
-      <TextInput
-        name="topText"
-        placeholder="Top Text"
-        onChange={() => undefined}
-      />
-    );
-    expect(getByPlaceholderText("Top Text")).toBeTruthy();
-  });
-
-  it("updates on change", () => {
-    const { getByPlaceholderText } = render(
-      <TextInput
-        name="topText"
-        placeholder="Top Text"
-        onChange={() => undefined}
-      />
-    );
-    const topTextInput = getByPlaceholderText("Top Text") as HTMLInputElement;
-    fireEvent.change(topTextInput, { target: { value: "something" } });
-    expect(topTextInput.value).toBe("something");
+describe("when Nav component is rendered", () => {
+  it("text of switch button and nav options are displayed", async () => {
+    const { getByText } = render(<Nav />);
+    await waitFor(() => {
+      getByText("Meme Generator");
+      getByText("Home");
+      getByText("Random Meme");
+      getByText("About");
+      getByText("Light");
+      getByText("Dark");
+    });
   });
 });

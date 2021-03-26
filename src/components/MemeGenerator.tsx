@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { Newmeme } from "./Newmeme";
 import Button from "./Button";
 import { TextInput } from "./TextInput";
+import withCounter from "./WithCounter";
 
 const DIV = styled.div`
   margin: 50px 300px 50px 300px;
@@ -32,9 +33,6 @@ export const MemeGenerator = ({
   const handleSumbit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const randNum = Math.floor(Math.random() * randomImages.length);
-    /* if (randNum < 35) {
-      throw new Error("Error !!!");
-    } */
     const randMemeImg = randomImages[randNum].url;
     setImage(randMemeImg);
   };
@@ -62,7 +60,7 @@ export const MemeGenerator = ({
           const { memes } = response.data.data;
           setRandomImages(memes);
         });
-        sleep(2000);
+        sleep(1000);
         setLoading(true);
       } catch (error) {
         console.log(error);
@@ -86,7 +84,8 @@ export const MemeGenerator = ({
               placeholder="Bottom Text"
               onChange={handleChangeBottomText}
             />
-            <Button />
+            {withCounter(Button)}
+            {/* {Button} */}
           </form>
           <Newmeme
             image={randomImage}
