@@ -6,6 +6,7 @@ import { Newmeme } from "./Newmeme";
 import Button from "./Button";
 import { TextInput } from "./TextInput";
 import withCounter from "./WithCounter";
+import { AxiosResponse } from "axios";
 
 const DIV = styled.div`
   margin: 50px 300px 50px 300px;
@@ -84,8 +85,8 @@ export const MemeGenerator = ({
               placeholder="Bottom Text"
               onChange={handleChangeBottomText}
             />
-            {withCounter(Button)}
-            {/* {Button} */}
+            {/* {withCounter(Button)} */}
+            {Button}
           </form>
           <Newmeme
             image={randomImage}

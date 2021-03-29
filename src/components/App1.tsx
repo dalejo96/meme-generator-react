@@ -11,9 +11,7 @@ export const App1 = (): React.ReactElement => {
   return (
     <ThemeProvider>
       <Header />
-      <ErrorBoundary>
-        <Information />
-      </ErrorBoundary>
+      <ErrorBoundary>{Information}</ErrorBoundary>
       <MemeGenerator apiCall={callApi} />
       <Footer />
     </ThemeProvider>

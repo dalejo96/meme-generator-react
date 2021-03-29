@@ -34,4 +34,5 @@ const Information = ({
   }
 };
 
+//export default Information;
 export default withCounter(Information);

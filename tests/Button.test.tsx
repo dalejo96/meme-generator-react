@@ -1,10 +1,11 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import Button from "../src/components/Button";
 import userEvent from "@testing-library/user-event";
+import withCounter from "../src/components/WithCounter";
 
 describe("when Button component is renderer", () => {
   it("default text is displayed", async () => {
-    const { getByText } = render(<Button />);
+    const { getByText } = render({ Button });
     await waitFor(() => {
       getByText("Generate 0 times");
     });
