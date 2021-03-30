@@ -54,8 +54,6 @@ export const MemeGenerator = ({
     } while (currentDate - date < milliseconds);
   }
 
-  const ButtonWithCounter = withCounter(Button);
-
   useEffect(() => {
     const SearchMemes = async () => {
       try {
@@ -88,7 +86,7 @@ export const MemeGenerator = ({
               onChange={handleChangeBottomText}
             />
             {/* {withCounter(Button)} */}
-            {/* {Button} */}
+            {/* {Button()} */}
             {<Button />}
           </form>
           <Newmeme

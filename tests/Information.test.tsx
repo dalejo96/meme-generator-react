@@ -6,7 +6,9 @@ import { ThemeProvider } from "../src/components/ThemeContext";
 
 describe("when Information component is rendered", () => {
   it("default dark text is displayed", async () => {
-    const { getByText } = render(<Information />);
+    const { getByText } = render(
+      <Information count={0} incrementCount={() => undefined} />
+    );
     await waitFor(() => {
       getByText(
         "Welcome to the meme generator! With dark theme! Hovered 0 times!"
@@ -20,7 +22,7 @@ describe("when Information component is rendered with nav", () => {
     render(
       <ThemeProvider>
         <Nav />
-        <Information />
+        <Information count={0} incrementCount={() => undefined} />
       </ThemeProvider>
     );
     await waitFor(() => {
