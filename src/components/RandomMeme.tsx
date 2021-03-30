@@ -13,7 +13,9 @@ export const RandomMeme = (props: RouteComponentProps): React.ReactElement => {
     <>
       <Nav />
       <Header />
-      <ErrorBoundary>{Information}</ErrorBoundary>
+      <ErrorBoundary>
+        <Information />
+      </ErrorBoundary>
       <MemeGenerator apiCall={callApi} />
       <Footer />
     </>

@@ -8,10 +8,8 @@ interface ButtonProps {
 }
 
 //const Button: React.FC<ButtonProps> = ({ count, incrementCount }) => {
-const Button: React.FC<ButtonProps> = ({
-  count,
-  incrementCount,
-}): React.ReactElement => {
+//const Button: React.FC<ButtonProps> = ({  count,  incrementCount,}): React.ReactElement => {
+const Button = ({ count, incrementCount }: ButtonProps): React.ReactElement => {
   const { theme } = useTheme();
 
   const themeStyle = {

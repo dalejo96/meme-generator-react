@@ -5,12 +5,16 @@ interface NewMemeProps {
   topText: string;
   bottomText: string;
 }
-export const Newmeme = (props: NewMemeProps): React.ReactElement => {
+export const Newmeme = ({
+  image,
+  topText,
+  bottomText,
+}: NewMemeProps): React.ReactElement => {
   return (
     <div className="meme">
-      <img src={props.image} alt="" />
-      <h2 className="top">{props.topText}</h2>
-      <h2 className="bottom">{props.bottomText}</h2>
+      <img src={image} alt="" />
+      <h2 className="top">{topText}</h2>
+      <h2 className="bottom">{bottomText}</h2>
     </div>
   );
 };

@@ -12,7 +12,8 @@ interface MemeCardProps {
 export const MemeCard = ({ name, url }: MemeCardProps): React.ReactElement => {
   const { theme } = useTheme();
   const handleCardClick = () => {
-    navigate("/custom-meme", { state: { url: url } });
+    //navigate("/custom-meme", { state: { url: url } });
+    navigate("/custom-meme?image=" + encodeURIComponent(url));
   };
 
   const StyleCard = {

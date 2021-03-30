@@ -2,22 +2,14 @@ import { render } from "@testing-library/react";
 import * as React from "react";
 import { useState } from "react";
 
-interface IProps {}
-
-interface IState {
-  count: number;
-}
-
 export interface InjectedCounterProps {
   count: number;
   incrementCount: () => void;
 }
-//cambiar a function
 
 function withCounter<P extends InjectedCounterProps>(
   WrapperComponent: React.ComponentType<P>
 ): React.ComponentType<P> {
-  //const WithCounter: React.FC<P> = (props) => {
   return (props) => {
     const [count, setCount] = useState(0);
 
