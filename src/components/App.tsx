@@ -6,7 +6,7 @@ import { About } from "./About";
 import { ThemeProvider } from "./ThemeContext";
 import { CustomMeme } from "./CustomMeme";
 
-export const App2 = () => {
+export const App = () => {
   return (
     <ThemeProvider>
       <Router>

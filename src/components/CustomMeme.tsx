@@ -1,11 +1,8 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
-import * as ReactBootStrap from "react-bootstrap";
-import styled from "styled-components";
+import { useState } from "react";
 import { Newmeme } from "./Newmeme";
-import Button from "./Button";
 import { TextInput } from "./TextInput";
-import { RouteComponentProps, useLocation, useParams } from "@reach/router";
+import { RouteComponentProps, useLocation } from "@reach/router";
 import { Nav } from "./Nav";
 import { parse } from "query-string";
 

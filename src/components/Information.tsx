@@ -7,10 +7,7 @@ interface InformationProps {
   incrementCount: () => void;
 }
 
-const Information = ({
-  count,
-  incrementCount,
-}: InformationProps): React.ReactElement => {
+const Information = ({ count, incrementCount }: InformationProps) => {
   const { theme } = useTheme();
 
   const themeStyles = {

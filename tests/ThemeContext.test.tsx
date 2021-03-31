@@ -49,7 +49,7 @@ describe("<ThemeContext.Provider />", () => {
       render(
         <ThemeContext.Provider value={theme}>
           <Nav />
-          <Information count={0} incrementCount={() => undefined} />
+          <Information />
         </ThemeContext.Provider>
       );
     });
@@ -80,7 +80,7 @@ describe("<ThemeContext.Provider />", () => {
       render(
         <ThemeContext.Provider value={theme}>
           <Header />
-          <Information count={0} incrementCount={() => undefined} />
+          <Information />
         </ThemeContext.Provider>
       );
     });

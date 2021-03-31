@@ -5,8 +5,6 @@ import styled from "styled-components";
 import { Newmeme } from "./Newmeme";
 import Button from "./Button";
 import { TextInput } from "./TextInput";
-import withCounter from "./WithCounter";
-import { AxiosResponse } from "axios";
 
 const DIV = styled.div`
   margin: 50px 300px 50px 300px;

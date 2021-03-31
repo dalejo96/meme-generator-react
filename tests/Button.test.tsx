@@ -5,13 +5,7 @@ import withCounter from "../src/components/WithCounter";
 
 describe("when Button component is renderer", () => {
   it("default text is displayed", async () => {
-    let count = 0;
-    const incrementCount = () => {
-      count = count + 1;
-    };
-    const { getByText } = render(
-      <Button count={count} incrementCount={incrementCount} />
-    );
+    const { getByText } = render(<Button />);
     await waitFor(() => {
       getByText("Generate 0 times");
     });
@@ -20,11 +14,7 @@ describe("when Button component is renderer", () => {
 
 describe("when the button is clicked one time", () => {
   it("then text changes one time", async () => {
-    let count = 0;
-    const incrementCount = () => {
-      count = count + 1;
-    };
-    render(<Button count={count} incrementCount={incrementCount} />);
+    render(<Button />);
     await waitFor(() => {
       screen.getByText("Generate 0 times");
     });
@@ -37,11 +27,7 @@ describe("when the button is clicked one time", () => {
 
 describe("when the button is clicked two times", () => {
   it("then text changes two times", async () => {
-    let count = 0;
-    const incrementCount = () => {
-      count = count + 1;
-    };
-    render(<Button count={count} incrementCount={incrementCount} />);
+    render(<Button />);
     await waitFor(() => {
       screen.getByText("Generate 0 times");
     });

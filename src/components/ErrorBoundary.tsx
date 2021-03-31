@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 
 interface ErrorBoundaryProps {
   hasError: boolean;
@@ -6,7 +6,7 @@ interface ErrorBoundaryProps {
 }
 interface IProps {}
 export default class ErrorBoundary extends React.Component<
-  {},
+  any,
   ErrorBoundaryProps
 > {
   constructor(props: IProps) {
