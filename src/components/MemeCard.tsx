@@ -9,7 +9,7 @@ interface MemeCardProps {
   url: string;
 }
 
-export const MemeCard = ({ name, url }: MemeCardProps): React.ReactElement => {
+export const MemeCard: React.FC<MemeCardProps> = ({ name, url }) => {
   const { theme } = useTheme();
   const handleCardClick = () => {
     //navigate("/custom-meme", { state: { url: url } });

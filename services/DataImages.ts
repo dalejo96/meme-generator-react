@@ -14,8 +14,18 @@ export class APIWrapperMock {
       data: {
         data: {
           memes: [
-            { url: "https://i.imgflip.com/30b1gx.jpg" },
-            { url: "https://i.imgflip.com/1ur9b0.jpg" },
+            {
+              url: "https://i.imgflip.com/30b1gx.jpg",
+              name: "Drake Hotline Bling",
+            },
+            {
+              url: "https://i.imgflip.com/1ur9b0.jpg",
+              name: "Distracted Boyfriend",
+            },
+            {
+              url: "https://i.imgflip.com/1g8my4.jpg",
+              name: "Two Buttons",
+            },
           ],
         },
       },
@@ -23,6 +33,26 @@ export class APIWrapperMock {
   }
 }
 
+interface CallApiInterface {
+  value:
+    | AxiosResponse
+    | Promise<{
+        data: {
+          data: {
+            memes: {
+              url: string;
+              name: string;
+            }[];
+          };
+        };
+      }>;
+}
+
+//export function callApi(client: any = new APIWrapper()): callApiType {
+//export function callApi(client: any = new APIWrapperMock()): any {
 export function callApi(client: any = new APIWrapper()): any {
+  return client.get();
+}
+export function callApiMocked(client: any = new APIWrapperMock()): any {
   return client.get();
 }

@@ -1,5 +1,4 @@
-import { render, fireEvent, screen, waitFor } from "@testing-library/react";
-import { TextInput } from "../src/components/TextInput";
+import { render, waitFor } from "@testing-library/react";
 import { Nav } from "../src/components/Nav";
 
 describe("when Nav component is rendered", () => {

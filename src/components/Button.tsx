@@ -1,15 +1,12 @@
 import * as React from "react";
 import { useTheme } from "./ThemeContext";
-import withCounter from "./WithCounter";
+import withCounter, { InjectedCounterProps } from "./WithCounter";
 
-interface ButtonProps {
-  count: number;
-  incrementCount: () => void;
-}
+interface ButtonProps extends InjectedCounterProps {}
 
 //const Button: React.FC<ButtonProps> = ({ count, incrementCount }) => {
 //const Button: React.FC<ButtonProps> = ({  count,  incrementCount,}): React.ReactElement => {
-const Button = ({ count, incrementCount }: ButtonProps): React.ReactElement => {
+const Button: React.FC<ButtonProps> = (props) => {
   const { theme } = useTheme();
 
   const themeStyle = {
@@ -18,9 +15,13 @@ const Button = ({ count, incrementCount }: ButtonProps): React.ReactElement => {
   };
 
   return (
-    <button onClick={incrementCount} style={themeStyle} type="submit">
-      Generate {count} times
-    </button>
+    <>
+      {props.incrementCount && (
+        <button onClick={props.incrementCount} style={themeStyle} type="submit">
+          Generate {props.count} times
+        </button>
+      )}
+    </>
   );
 };
 

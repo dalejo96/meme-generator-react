@@ -1,13 +1,11 @@
 import React from "react";
 import { useTheme } from "./ThemeContext";
-import withCounter from "./WithCounter";
+import withCounter, { InjectedCounterProps } from "./WithCounter";
 
-interface InformationProps {
-  count: number;
-  incrementCount: () => void;
-}
+interface InformationProps extends InjectedCounterProps {}
 
-const Information = ({ count, incrementCount }: InformationProps) => {
+const Information: React.FC<InformationProps> = (props) => {
+  //const Information = ({ count, incrementCount }: InformationProps) => {
   const { theme } = useTheme();
 
   const themeStyles = {
@@ -16,19 +14,17 @@ const Information = ({ count, incrementCount }: InformationProps) => {
     padding: "2rem",
     margin: "2rem",
   };
-
   {
-    if (count < 10) {
-      return (
-        <div onMouseOver={incrementCount} style={themeStyles}>
-          Welcome to the meme generator! With {theme} theme! Hovered {count}{" "}
-          times!
-        </div>
-      );
-    } else {
+    if (props?.count && props.count >= 10) {
       throw new Error("Too much hover !!");
     }
   }
+  return (
+    <div onMouseOver={props.incrementCount} style={themeStyles}>
+      Welcome to the meme generator! With {theme} theme! Hovered {props.count}{" "}
+      times!
+    </div>
+  );
 };
 
 //export default Information;

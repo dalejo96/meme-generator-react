@@ -2,7 +2,7 @@ import * as React from "react";
 import { useTheme } from "./ThemeContext";
 //import BootstrapSwitchButton from "bootstrap-switch-button-react";
 
-export const Header = (): React.ReactElement => {
+export const Header: React.FC = () => {
   const { theme } = useTheme();
 
   const themeStyles = {

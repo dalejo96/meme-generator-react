@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import { useTheme } from "./ThemeContext";
 
-export const Footer = (): React.ReactElement => {
+export const Footer: React.FC = () => {
   const { theme } = useTheme();
 
   const Footer = styled.footer<{ isDark: boolean }>`

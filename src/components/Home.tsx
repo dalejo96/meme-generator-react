@@ -11,13 +11,17 @@ interface ImageData {
   id: string;
 }
 
-export const Home = (props: RouteComponentProps): React.ReactElement => {
+interface HomeProps extends RouteComponentProps {
+  apiCall: () => any;
+}
+
+export const Home = ({ apiCall }: HomeProps): React.ReactElement => {
   const [randomImageData, setRandomImageData] = useState<ImageData[]>([]);
 
   useEffect(() => {
     const SearchMemes = async () => {
       try {
-        await callApi().then((response: any) => {
+        await apiCall().then((response: any) => {
           const { memes } = response.data.data;
           setRandomImageData(memes);
         });
