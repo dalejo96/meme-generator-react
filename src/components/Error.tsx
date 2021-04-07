@@ -1,10 +1,7 @@
 import * as React from "react";
 import { FallbackProps } from "react-error-boundary";
 
-export const Error: React.ComponentType<FallbackProps> = (
-  error: any,
-  resetErrorBoundary: void
-) => {
+export const Error: React.ComponentType<FallbackProps> = (error: any, {}) => {
   return (
     <>
       <h2>App Crashed</h2>
@@ -14,9 +11,6 @@ export const Error: React.ComponentType<FallbackProps> = (
   );
 };
 
-export const myErrorHandler = (
-  error: Error,
-  info: { componentStack: string }
-) => {
+export const myErrorHandler = (error: Error, {}) => {
   console.log(error);
 };

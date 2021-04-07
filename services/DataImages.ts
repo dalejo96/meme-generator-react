@@ -50,7 +50,7 @@ interface CallApiInterface {
 
 //export function callApi(client: any = new APIWrapper()): callApiType {
 //export function callApi(client: any = new APIWrapperMock()): any {
-export function callApi(client: any = new APIWrapper()): any {
+export function callApi(client: any = new APIWrapper()): AxiosResponse {
   return client.get();
 }
 export function callApiMocked(client: any = new APIWrapperMock()): any {

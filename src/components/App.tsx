@@ -1,3 +1,4 @@
+import * as React from "react";
 import { Router } from "@reach/router";
 import { Home } from "./Home";
 import { RandomMeme } from "./RandomMeme";

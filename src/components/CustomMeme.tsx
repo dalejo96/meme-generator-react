@@ -42,13 +42,7 @@ export const CustomMeme: React.FC<CustomMemeProps> = (props) => {
           onChange={handleChangeBottomText}
         />
       </div>
-      <Newmeme
-        //image={props.location.state.url ?? ""}
-        //image={props.urlImage ?? ""}
-        image={imageUrl}
-        topText={topText}
-        bottomText={bottomText}
-      />
+      <Newmeme image={imageUrl} topText={topText} bottomText={bottomText} />
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import { RouteComponentProps } from "@reach/router";
 import * as React from "react";
-import { callApi, APIWrapper } from "../../services/DataImages";
-import ErrorBoundary from "./ErrorBoundary";
+import { callApi } from "../../services/DataImages";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 import Information from "./Information";

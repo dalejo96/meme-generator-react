@@ -9,7 +9,8 @@ export interface InjectedCounterProps {
 function withCounter<P extends InjectedCounterProps>(
   Component: React.ComponentType<P>
 ): React.FC<P> {
-  return (props) => {
+  return function WrappedWithCounter(props) {
+    //return (props)=> {
     const [count, setCount] = useState(0);
 
     const incrementCount = () => {

@@ -2,7 +2,6 @@ import { RouteComponentProps } from "@reach/router";
 import * as React from "react";
 import { useEffect, useState } from "react";
 import { Nav } from "./Nav";
-import { callApi } from "../../services/DataImages";
 import { MemeCard } from "./MemeCard";
 
 interface ImageData {

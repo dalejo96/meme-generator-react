@@ -4,61 +4,34 @@ import Information from "../src/components/Information";
 import { Nav } from "../src/components/Nav";
 import { ThemeProvider } from "../src/components/ThemeContext";
 
-describe("when Information component is rendered", () => {
-  it("default dark text is displayed", async () => {
-    const { getByText } = render(<Information />);
-    await waitFor(() => {
-      getByText(
-        "Welcome to the meme generator! With dark theme! Hovered 0 times!"
-      );
-    });
-  });
+function getHoverAndThemeText(theme: string, count: number): string {
+  return `Welcome to the meme generator! With ${theme} theme! Hovered ${count} times!`;
+}
 
+describe("when Information component is rendered", () => {
   it("then text changes one time when hover action is performed", async () => {
     render(<Information />);
     await waitFor(() => {
-      screen.getByText(
-        "Welcome to the meme generator! With dark theme! Hovered 0 times!"
-      );
+      screen.getByText(getHoverAndThemeText("dark", 0));
     });
-    userEvent.hover(
-      screen.getByText(
-        "Welcome to the meme generator! With dark theme! Hovered 0 times!"
-      )
-    );
+    userEvent.hover(screen.getByText(getHoverAndThemeText("dark", 0)));
     await waitFor(() => {
-      screen.getByText(
-        "Welcome to the meme generator! With dark theme! Hovered 1 times!"
-      );
+      screen.getByText(getHoverAndThemeText("dark", 1));
     });
   });
 
   it("then text changes two time when hover action is performed twice", async () => {
     render(<Information />);
     await waitFor(() => {
-      screen.getByText(
-        "Welcome to the meme generator! With dark theme! Hovered 0 times!"
-      );
+      screen.getByText(getHoverAndThemeText("dark", 0));
     });
-    userEvent.hover(
-      screen.getByText(
-        "Welcome to the meme generator! With dark theme! Hovered 0 times!"
-      )
-    );
+    userEvent.hover(screen.getByText(getHoverAndThemeText("dark", 0)));
     await waitFor(() => {
-      screen.getByText(
-        "Welcome to the meme generator! With dark theme! Hovered 1 times!"
-      );
+      screen.getByText(getHoverAndThemeText("dark", 1));
     });
-    userEvent.hover(
-      screen.getByText(
-        "Welcome to the meme generator! With dark theme! Hovered 1 times!"
-      )
-    );
+    userEvent.hover(screen.getByText(getHoverAndThemeText("dark", 1)));
     await waitFor(() => {
-      screen.getByText(
-        "Welcome to the meme generator! With dark theme! Hovered 2 times!"
-      );
+      screen.getByText(getHoverAndThemeText("dark", 2));
     });
   });
 });
@@ -72,15 +45,11 @@ describe("when Information component is rendered with context", () => {
       </ThemeProvider>
     );
     await waitFor(() => {
-      screen.getByText(
-        "Welcome to the meme generator! With dark theme! Hovered 0 times!"
-      );
+      screen.getByText(getHoverAndThemeText("dark", 0));
     });
     userEvent.click(screen.getByText("Dark"));
     await waitFor(() => {
-      screen.getByText(
-        "Welcome to the meme generator! With light theme! Hovered 0 times!"
-      );
+      screen.getByText(getHoverAndThemeText("light", 0));
     });
   });
 
@@ -92,25 +61,15 @@ describe("when Information component is rendered with context", () => {
       </ThemeProvider>
     );
     await waitFor(() => {
-      screen.getByText(
-        "Welcome to the meme generator! With dark theme! Hovered 0 times!"
-      );
+      screen.getByText(getHoverAndThemeText("dark", 0));
     });
-    userEvent.hover(
-      screen.getByText(
-        "Welcome to the meme generator! With dark theme! Hovered 0 times!"
-      )
-    );
+    userEvent.hover(screen.getByText(getHoverAndThemeText("dark", 0)));
     await waitFor(() => {
-      screen.getByText(
-        "Welcome to the meme generator! With dark theme! Hovered 1 times!"
-      );
+      screen.getByText(getHoverAndThemeText("dark", 1));
     });
     userEvent.click(screen.getByText("Dark"));
     await waitFor(() => {
-      screen.getByText(
-        "Welcome to the meme generator! With light theme! Hovered 1 times!"
-      );
+      screen.getByText(getHoverAndThemeText("light", 1));
     });
   });
 });
