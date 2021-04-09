@@ -16,6 +16,7 @@ export const CustomMeme: React.FC<CustomMemeProps> = (props) => {
   const location = useLocation();
   const searchParams = parse(location.search);
   const imageUrl = searchParams.image as string;
+  const name = searchParams.name as string;
   const [topText, setTopText] = useState<string>("");
   const [bottomText, setBottomText] = useState<string>("");
 
@@ -42,7 +43,12 @@ export const CustomMeme: React.FC<CustomMemeProps> = (props) => {
           onChange={handleChangeBottomText}
         />
       </div>
-      <Newmeme image={imageUrl} topText={topText} bottomText={bottomText} />
+      <Newmeme
+        image={imageUrl}
+        imageName={name}
+        topText={topText}
+        bottomText={bottomText}
+      />
     </div>
   );
 };

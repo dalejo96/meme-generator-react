@@ -13,7 +13,12 @@ export const MemeCard: React.FC<MemeCardProps> = ({ name, url }) => {
   const { theme } = useTheme();
   const handleCardClick = () => {
     //navigate("/custom-meme", { state: { url: url } });
-    navigate("/custom-meme?image=" + encodeURIComponent(url));
+    navigate(
+      "/custom-meme?image=" +
+        encodeURIComponent(url) +
+        "&name=" +
+        encodeURIComponent(name)
+    );
   };
 
   const StyleCard = {

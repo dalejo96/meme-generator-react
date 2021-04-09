@@ -28,21 +28,15 @@ describe("when Meme Generator component is rendered", () => {
     });
   });
   it("if button is clicked, the image changes", async () => {
-    const { getByText, getByRole } = render(
+    const { getByText, getByRole, getByAltText } = render(
       <MemeGenerator apiCall={callApiMocked} />
     );
     await waitFor(() => {
-      expect(getByRole("img")).toHaveAttribute(
-        "src",
-        "http://i.imgflip.com/1bij.jpg"
-      );
+      getByAltText("");
     });
     userEvent.click(getByText("Generate 0 times"));
     await waitFor(() => {
-      expect(getByRole("img")).not.toHaveAttribute(
-        "src",
-        "http://i.imgflip.com/1bij.jpg"
-      );
+      getByAltText(/Two Buttons|Drake Hotline Bling|Distracted Boyfriend/);
     });
   });
 });

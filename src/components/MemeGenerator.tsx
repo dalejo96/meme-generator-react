@@ -20,20 +20,24 @@ export const MemeGenerator = ({
   const [topText, setTopText] = useState<string>("");
   const [randomImages, setRandomImages] = useState<Image[]>([]);
   const [bottomText, setBottomText] = useState<string>("");
-  const [randomImage, setImage] = useState<string>(
+  const [randomImage, setRandomImage] = useState<string>(
     "http://i.imgflip.com/1bij.jpg"
   );
+  const [randomName, setRandomName] = useState<string>("");
   const [loading, setLoading] = useState(false);
 
   interface Image {
     url: string;
+    name: string;
   }
 
   const handleSumbit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const randNum = Math.floor(Math.random() * randomImages.length);
     const randMemeImg = randomImages[randNum].url;
-    setImage(randMemeImg);
+    const randMemeName = randomImages[randNum].name;
+    setRandomImage(randMemeImg);
+    setRandomName(randMemeName);
   };
 
   const handleChangeTopText = (topText: string) => {
@@ -89,6 +93,7 @@ export const MemeGenerator = ({
           </form>
           <Newmeme
             image={randomImage}
+            imageName={randomName}
             topText={topText}
             bottomText={bottomText}
           />
