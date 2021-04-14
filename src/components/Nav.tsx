@@ -40,6 +40,9 @@ export const Nav = (): React.ReactElement => {
           <Link className="nav-item nav-link" to="/about">
             About
           </Link>
+          <Link className="nav-item nav-link" to="/contact">
+            Contact
+          </Link>
         </div>
         <BootstrapSwitchButton
           checked={false}

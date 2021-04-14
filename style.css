@@ -119,3 +119,12 @@ header > p {
   width: 150px;
   border-radius: 25px;
 }
+
+.preview {
+  max-width: 600px;
+}
+
+.center_div {
+  margin: 0 auto;
+  width: 60%;
+}

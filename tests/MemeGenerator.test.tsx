@@ -36,7 +36,7 @@ describe("when Meme Generator component is rendered", () => {
     });
     userEvent.click(getByText("Generate 0 times"));
     await waitFor(() => {
-      getByAltText(/Two Buttons|Drake Hotline Bling|Distracted Boyfriend/);
+      getByAltText(/Two Buttons|Drake Hotline Bling|Distracted Boyfriend/); //mejorar!
     });
   });
 });

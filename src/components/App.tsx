@@ -6,6 +6,7 @@ import { About } from "./About";
 import { ThemeProvider } from "./ThemeContext";
 import { CustomMeme } from "./CustomMeme";
 import { callApi } from "../../services/DataImages";
+import { Contact } from "./Contact";
 
 export const App: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ export const App: React.FC = () => {
         <RandomMeme path="/random-meme" />
         <About path="/about" />
         <CustomMeme path="/custom-meme" />
+        <Contact path="/contact" />
       </Router>
     </ThemeProvider>
   );
